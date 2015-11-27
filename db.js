@@ -17,6 +17,7 @@ var db = {};
 
 db.ticket = sequelize.import(__dirname + '/models/ticket.js');
 db.damage = sequelize.import(__dirname + '/models/damage.js');
+db.open = sequelize.import(__dirname + '/models/open.js');
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 

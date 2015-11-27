@@ -169,7 +169,22 @@ app.put('/tickets/:id', function(req, res) {
 	});
 });
 
-// GET /damages/:ticketId
+/**
+* GET /damages
+*/
+app.get('/damages', function(req, res) {
+	var where = {};
+
+	db.damage.findAll({where: where}).then(function(damages){
+		res.json(damages);
+	}, function(e) {
+		res.status(500).send();
+	});
+});
+
+/**
+* GET /damages/:ticketId
+*/
 app.get('/damages/:id', function(req, res) {
 	var ticketId = parseInt(req.params.id, 10);
 	var where = {
@@ -183,7 +198,9 @@ app.get('/damages/:id', function(req, res) {
 	});
 });
 
-// POST /damages/
+/**
+* POST /damages
+*/
 app.post('/damages', function(req, res) {
 	var body = _.pick(req.body, 'latitude', 'longitude', 'ticketId', 'damageSize');
 	var attributes = {};
@@ -194,7 +211,24 @@ app.post('/damages', function(req, res) {
 		db.ticket.findById(body.ticketId).then(function(ticket){
 			if(ticket) {
 				ticket.update(attributes).then(function(ticket) {
-					res.json(damage.toJSON());
+					var where = {};
+
+					where.damaged = true;
+					where.handled = false;
+
+					db.ticket.findAll({where: where}).then(function(tickets){
+						var body = {
+							"open": tickets.length
+						}
+						
+						db.open.create(body).then(function (open) {
+							res.json(damage.toJSON());
+						}, function(e) {
+							res.status(400).json(e);
+						});
+					}, function(e) {
+						res.status(500).send();
+					});
 				}, function(e) {
 					res.status(400).json(e);
 				});
@@ -208,6 +242,20 @@ app.post('/damages', function(req, res) {
 		res.status(400).json(e);
 	});
 });
+
+/**
+* GET /opens
+*/ 
+app.get('/opens', function(req, res) {
+	var where = {};
+
+	db.open.findAll({where: where}).then(function(opens){
+		res.json(opens);
+	}, function(e) {
+		res.status(500).send();
+	});
+});
+
 
 db.sequelize.sync().then(function() {
 	app.listen(PORT, function() {
