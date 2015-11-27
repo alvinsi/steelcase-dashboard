@@ -16,9 +16,54 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
  
 app.get('/', function (req, res) {
-  res.render('home', {
-		title: 'Home',
+
+	var laserTickets, damagedTickets, totalOrders, healthIdx, crmIdx;
+
+	/**
+	* LEGEND:
+	*	1. Current Unhandled Damages: Size of tickets/?damaged=true&handled=false
+	*	2. Total Damaged Parts: Size of tickets/?damaged=true
+	*	3. Total Orders: Size of tickets/
+	*	4. Overall Health Index: How well the shipping condition is right now (1-Damaged/Orders)*100%
+	*	5. Customer Support Index: How well Customer Service is handling damaged packages right now (Unhandled/Damaged)*100%
+	*/
+	
+	var where = {};
+	db.ticket.findAll({where: where}).then(function(tickets){
+		totalOrders = tickets.length;
+		where.damaged = true;
+		
+		db.ticket.findAll({where: where}).then(function(damagedTickets){
+			damagedTickets = damagedTickets.length;
+			where.handled = false;
+
+			db.ticket.findAll({where: where}).then(function(laserTickets){
+				laserTickets = laserTickets.length;
+				healthIdx = ((1 - (damagedTickets/totalOrders)) * 100).toFixed(2);
+				crmIdx = ((1- (laserTickets/damagedTickets)) * 100).toFixed(2);
+
+				res.render('home', {
+					title: 'Home',
+					laserTickets: laserTickets,
+			  	damagedTickets: damagedTickets,
+			  	totalOrders: totalOrders,
+			  	healthIdx: healthIdx + '%',
+			  	crmIdx: crmIdx + '%'
+				});
+			}, function(e) {
+				res.status(500).send();
+			});
+
+
+		}, function(e) {
+			res.status(500).send();
+		});
+	}, function(e) {
+		res.status(500).send();
 	});
+
+
+  
 });
 
 app.get('/query', function (req, res) {
@@ -143,7 +188,7 @@ app.delete('/tickets/:id', function(req, res) {
 */
 app.put('/tickets/:id', function(req, res) {
 	var ticketId = parseInt(req.params.id, 10);
-	var body = _.pick(req.body, 'handled', 'damaged');
+	var body = _.pick(req.body, 'handled', 'damaged', 'lastSeenLat', 'lastSeenLng');
 	var attributes = {};
 
 	if (body.hasOwnProperty('handled')) {
@@ -152,6 +197,14 @@ app.put('/tickets/:id', function(req, res) {
 
 	if (body.hasOwnProperty('damaged')) {
 		attributes.damaged = body.damaged;
+	}
+
+	if (body.hasOwnProperty('lastSeenLat')) {
+		attributes.lastSeenLat = body.lastSeenLat;
+	}
+
+	if (body.hasOwnProperty('lastSeenLng')) {
+		attributes.lastSeenLng = body.lastSeenLng;
 	}
 
 	db.ticket.findById(ticketId).then(function(ticket){
@@ -220,7 +273,7 @@ app.post('/damages', function(req, res) {
 						var body = {
 							"open": tickets.length
 						}
-						
+
 						db.open.create(body).then(function (open) {
 							res.json(damage.toJSON());
 						}, function(e) {

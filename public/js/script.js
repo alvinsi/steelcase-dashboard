@@ -137,15 +137,6 @@ function queryTable() {
  	});
 }
 
-///////////////////////////////// TODO /////////////////////////////////////
-/// 1. Current Unhandled Damages: Size of tickets/?damaged=true&handled=false
-/// 2. Total Damaged Parts: Size of tickets/?damaged=true
-/// 3. Total Orders: Size of tickets/
-/// 4. Overall Health Index: How well the shipping condition is right now (1-Damaged/Orders)*100%
-/// 5. Customer Support Index: How well Customer Service is handling damaged packages right now (Unhandled/Damaged)*100%
-/// 6. Graph: Use current unhandled as value. Use separate table, everytime POST request to damaged table is executed, update count and time stamp. Use this to plot graph
-/// 	 https://developers.google.com/chart/interactive/docs/datesandtimes
-
 /**
 * Plotting Graph on Homepage
 */
@@ -154,7 +145,7 @@ google.load('visualization', '1', {packages: ['corechart']});
 function drawBasic() {
   var dataTable = new google.visualization.DataTable();
   dataTable.addColumn('date', 'Time');
-  dataTable.addColumn('number', 'Open Tickets');
+  dataTable.addColumn('number', 'LASER Tickets');
 
 
   $.ajax({
@@ -205,7 +196,7 @@ function drawBasic() {
           }
 		    },
 		    vAxis: {
-		      title: 'Open Tickets',
+		      title: 'LASER Tickets',
 		      minValue: 0,
 		      textStyle: {
 		        fontName: 'Arial',
@@ -225,22 +216,13 @@ function drawBasic() {
 		    }
 		  };
 
-
 		  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 
 		  chart.draw(dataTable, options);
     },
    	type: 'GET'
  	});
-
-
-
-
-  
-
-	
 }
-///////////////////////////////// TODO /////////////////////////////////////
 
 /**
 * Initialize the Map on Each Order

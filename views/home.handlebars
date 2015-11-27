@@ -23,12 +23,21 @@
     <h3 class="sub-header">Overview</h3>
     <div id="home-right-content">
       <div id="chart_div"></div>
-      <h5>Damaged Parts Per Week</h5>
-      <p>14</p>
-      <h5>Most Frequent Damage Location</h5>
-      <p>14</p>
-      <h5>Open Tickets</h5>
-      <p>14</p>
+      <div id="leftContent">
+        <h5>Current LASER Tickets</h5>
+        <p>{{laserTickets}}</p>
+        <h5>Current Damaged Tickets</h5>
+        <p>{{damagedTickets}}</p>
+        <h5>Current Orders</h5>
+        <p>{{totalOrders}}</p>
+      </div>
+      <div id="rightContent">
+        <h5>Overall Package Health Index</h5>
+        <p>{{healthIdx}}</p>
+        <h5>Customer Relationship Management Index</h5>
+        <p>{{crmIdx}}</p>
+      </div>
+      <div class="break"></div>
     </div>
   </div>
 </div>

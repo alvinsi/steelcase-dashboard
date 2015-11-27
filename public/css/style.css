@@ -14,6 +14,9 @@ a, a:hover {
 button, button:hover, button:active, button:focus {
   outline: none !important;
 }
+a, a:hover, a:active, a:focus {
+  outline: none !important;
+}
 ::-webkit-scrollbar {
   -webkit-appearance: block;
   width: 7px;
@@ -27,7 +30,7 @@ button, button:hover, button:active, button:focus {
   margin: 0 !important;
   padding: 0 !important;
   width: 180px !important;
-}
+} 
 .iw-content {
   margin: 0 !important;
   padding: 0 !important;
@@ -56,6 +59,9 @@ button, button:hover, button:active, button:focus {
 }
 .header-fixed {
   width: 100%;
+}
+.break {
+  clear: both;
 }
 .header-fixed > thead,
 .header-fixed > tbody,
@@ -157,4 +163,10 @@ button, button:hover, button:active, button:focus {
 }
 #map { 
   height: 100%; 
+}
+#leftContent {
+  float: left;
+}
+#rightContent {
+  float: right;
 }
