@@ -166,7 +166,19 @@ a, a:hover, a:active, a:focus {
 }
 #leftContent {
   float: left;
+  margin: 0 20px;
+  padding: 0;
+}
+#leftContent p, h5 {
+  margin: 0 0 10px;
+  padding: 0;
+}
+#rightContent p, h5 {
+  margin: 0 0 10px;
+  padding: 0;
 }
 #rightContent {
-  float: right;
+  float: left;
+  margin: 0 20px;
+  padding: 0;
 }

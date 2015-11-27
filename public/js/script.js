@@ -365,10 +365,56 @@ function initialize() {
 	if (location.pathname === "/") {
 		homeTable();
 		drawBasic();
+		$(window).resize(function(){
+		  drawBasic();
+		});
 	} else if (location.pathname === "/query") {
 		queryTable();
+
+		$("#queryBar").change(function() {
+			for (var i = 0; i < queryLen; i++) {
+				document.getElementById('queryTable').deleteRow(2);
+			}
+			queryTable();
+		});
 	} else {
 		initMap();
+
+		$("#deleteOrder").click(function() {
+			var pathName = location.pathname;
+			var url = '/tickets/' + pathName.substr(7);
+
+			$.ajax({
+		    url: url,
+		    type: 'DELETE',
+		    success: function(result) {
+		      alert("Order Successfully Deleted");
+		      window.location.href = "/query";
+		    }
+			});
+		});
+
+		$("#handledOrder").click(function() {
+			var pathName = location.pathname;
+			var url = '/tickets/' + pathName.substr(7);
+
+			$.ajax({
+		    url: url,
+		    type: 'PUT',
+		    dataType: 'json',
+		    success: function (data) {
+		    	alert("Order Successfully Updated");
+		    	window.location.href = '/query';
+		    },
+		    error: function(e) {
+			    alert("Oops! Something Went Wrong, Please Try Again!")
+			  },
+		    data: JSON.stringify({
+			    "handled": "true"
+		  	}),
+		  	contentType: "application/json"
+		  });
+		});
 	}
 
 	$("#add").click(function() {
@@ -398,54 +444,7 @@ function initialize() {
 	  });
 	});
 
-	$(window).resize(function(){
-	  drawBasic();
-	});
-
-	$("#queryBar").change(function() {
-		for (var i = 0; i < queryLen; i++) {
-			document.getElementById('queryTable').deleteRow(2);
-		}
-		queryTable();
-	});
-
 	$(".navTabs").hover(function() {
 		$(this).toggleClass("active");
 	})
-
-	$("#deleteOrder").click(function() {
-		var pathName = location.pathname;
-		var url = '/tickets/' + pathName.substr(7);
-
-		$.ajax({
-	    url: url,
-	    type: 'DELETE',
-	    success: function(result) {
-	      alert("Order Successfully Deleted");
-	      window.location.href = "/query";
-	    }
-		});
-	});
-
-	$("#handledOrder").click(function() {
-		var pathName = location.pathname;
-		var url = '/tickets/' + pathName.substr(7);
-
-		$.ajax({
-	    url: url,
-	    type: 'PUT',
-	    dataType: 'json',
-	    success: function (data) {
-	    	alert("Order Successfully Updated");
-	    	window.location.href = '/query';
-	    },
-	    error: function(e) {
-		    alert("Oops! Something Went Wrong, Please Try Again!")
-		  },
-	    data: JSON.stringify({
-		    "handled": "true"
-	  	}),
-	  	contentType: "application/json"
-	  });
-	});
 }
