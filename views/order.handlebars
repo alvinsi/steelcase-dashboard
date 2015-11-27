@@ -1,0 +1,34 @@
+<div id="left-panel" class="col-md-2">
+  <h5><a href="../query">< Back</a></h5>
+  <hr>
+  <h5>ID</h5>
+  <p>{{trackId}}</p>
+  <hr>
+  <h5>Source</h5>
+  <p>{{source}}</p>
+  <hr>
+  <h5>Destination</h5>
+  <p>{{destination}}</p>
+  <hr>
+  <h5>Last Seen</h5>
+  <p>{{lastSeenLat}}, {{lastSeenLng}}</p>
+  <p>{{lastSeenTime}}</p>
+  <hr>
+  <h5>Package Status</h5>  
+  {{#if damaged}}
+    <p style="color:red">Damaged</p>
+  {{else}}
+    <p style="color:green">Good</p>
+  {{/if}}
+  <hr>
+  {{#if damaged}}
+    {{#if notHandled}}
+      <button class="btn btn-success center-block" id="handledOrder">Done</button>
+      <br>
+    {{/if}}
+  {{/if}} 
+  <button class="btn btn-danger center-block" id="deleteOrder">Delete</button>
+  <br><br>
+  
+</div>
+<div id="map" class="col-md-10"></div>

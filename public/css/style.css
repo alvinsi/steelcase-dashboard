@@ -1,0 +1,160 @@
+th, td { 
+  text-align: center; 
+}
+body, html {
+  height: 100%;
+}
+a, a:hover {
+  color: #333;
+  text-decoration: none;
+}
+.btn {
+  width: 100px;
+}
+button, button:hover, button:active, button:focus {
+  outline: none !important;
+}
+::-webkit-scrollbar {
+  -webkit-appearance: block;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+.iw-container {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 180px !important;
+}
+.iw-content {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.gm-style-iw {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 180px !important;
+}
+.iw-container, .iw-content {
+  height: 120px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.pac-container {
+    z-index: 1051 !important;
+}
+.table {
+  padding:0;
+  margin:0;
+}
+.empty {
+  height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+.header-fixed {
+  width: 100%;
+}
+.header-fixed > thead,
+.header-fixed > tbody,
+.header-fixed > thead > tr,
+.header-fixed > tbody > tr,
+.header-fixed > thead > tr > th,
+.header-fixed > tbody > tr > td {
+  display: block;
+}
+.header-fixed > tbody > tr:after,
+.header-fixed > thead > tr:after {
+  content: ' ';
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+.header-fixed > tbody {
+  overflow-y: auto;
+  height: 450px;
+}
+.header-fixed > tbody > tr > td,
+.header-fixed > thead > tr > th {
+  width: 20%;
+  float: left;
+}
+.header-fixed-query {
+  width: 100% 
+}
+.header-fixed-query > thead,
+.header-fixed-query > tbody,
+.header-fixed-query > thead > tr,
+.header-fixed-query > tbody > tr,
+.header-fixed-query > thead > tr > th,
+.header-fixed-query > tbody > tr > td {
+  display: block;
+}
+.header-fixed-query > tbody > tr:after,
+.header-fixed-query > thead > tr:after {
+  content: ' ';
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+.header-fixed-query > tbody {
+  overflow-y: auto;
+  height: 425px;
+}
+.header-fixed-query > tbody > tr > td,
+.header-fixed-query > thead > tr > th {
+  width: 50%;
+  float: left;
+}
+.blurbHeader {
+  font-weight: bold;
+}
+.blurbContent {
+  font-size: 0.8em;
+}
+#home-container {
+  position: relative;
+  top: 70px;
+}
+#chart_div {
+  height: 300px;
+}
+#home-right-content {
+  background-color: #f8f8f8;
+  padding: 1px 20px;
+}
+#home-right {
+  padding-bottom: 20px;
+}
+#query-container {
+  position: relative;
+  top: 70px;
+}
+#ticket-views {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  position: relative;
+  top: 20px;
+}
+#laser-ticket {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-top: 20px;
+}
+#left-panel {
+  height: 100%; 
+  background-color: #f8f8f8;
+  padding-top: 60px;
+  overflow-y: auto;
+}
+#left-panel p {
+  text-align: center;
+}
+#left-panel button {
+  text-align: center;
+}
+#map { 
+  height: 100%; 
+}

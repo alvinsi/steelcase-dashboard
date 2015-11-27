@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Steelcase - {{title}}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Steelcase</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="navTabs"><a href="/">Home</a></li>
+            <li class="navTabs"><a href="/query">Query</a></li>
+            <li class="navTabs"><a href="#" data-toggle="modal" data-target="#addOrder">+</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="addOrder" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h2 class="modal-title">
+              <center>Add Order</center>
+            </h2>
+          </div>
+          <div class="modal-body">
+            <p>
+              <label for="Source">Source:</label>
+              <input type="text" class="form-control" id="source">
+            </p>
+            <p>
+              <label for="Destination">Destination:</label>
+              <input type="text" class="form-control" id="destination">
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" id="add">Add</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {{{body}}}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+      <script src="/js/script.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM-GJTAXers--4zkLGDHoaC7vso9P9xwI&signed_in=true&libraries=places&callback=initialize"
+      async defer></script>
+    </body>
+</html>
