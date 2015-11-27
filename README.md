@@ -12,8 +12,7 @@ By Southern Solutions
 PUT /tickets/:id (lastSeenLat, lastSeenLng) {  // To update current location
      // Live Feed on Situation
      if (package is damaged) {
-          // Add Damaged Package Info from Arduino
-          POST /damaged (latitude, longitude, ticketId, damageSize)
+          POST /damaged (latitude, longitude, ticketId, damageSize) // Add Damaged Package Info from Arduino
      }
 }
 ```
