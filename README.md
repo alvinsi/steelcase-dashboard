@@ -8,7 +8,7 @@ By Southern Solutions
 4. "http://localhost:3000/"
 
 ## Integrating Live Feed with Arduino
-```
+``` javascript
 PUT /tickets/:id (lastSeenLat, lastSeenLng) {  // To update current location
      if (package is damaged) {
           POST /damaged (latitude, longitude, ticketId, damageSize) // Add Damaged Package Info from Arduino
