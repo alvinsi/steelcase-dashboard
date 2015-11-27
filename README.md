@@ -7,10 +7,9 @@ By Southern Solutions
 3. "node server.js" or  "npm start" or "nodemon server.js" to start
 4. "http://localhost:3000/"
 
-## Arduino to Database
+## Integrating Live Feed with Arduino
 ```
 PUT /tickets/:id (lastSeenLat, lastSeenLng) {  // To update current location
-     // Live Feed on Situation
      if (package is damaged) {
           POST /damaged (latitude, longitude, ticketId, damageSize) // Add Damaged Package Info from Arduino
      }
